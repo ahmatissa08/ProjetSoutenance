@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Groupe IAM - Institut Africain de Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Styles généraux */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #fff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* En-tête et Navigation */
+        header {
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+        }
+        
+        .logo {
+            width: 140px;
+            padding: 10px 0;
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-menu li {
+            margin-left: 30px;
+        }
+        
+        .nav-menu a {
+            color: #333;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #59b830;
+        }
+        
+        .btn-inscription {
+            background-color: #59b830;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-transform: uppercase;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-inscription:hover {
+            background-color: #4a9d28;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 24px;
+        }
+
+        /* Section hero */
+        .hero {
+            margin-top: 90px;
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .hero h1 {
+            font-size: 50px;
+            line-height: 1.2;
+            font-weight: 700;
+            color: #222;
+            margin-bottom: 40px;
+        }
+        
+        /* Parcours */
+        .parcours {
+            padding: 50px 0;
+        }
+        
+        .parcours-tabs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 60px;
+        }
+        
+        .parcours-tab {
+            padding: 20px;
+            background-color: #f8f9fa;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            transition: background-color 0.3s;
+        }
+        
+        .parcours-tab.active {
+            background-color: #59b830;
+            color: white;
+        }
+        
+        .parcours-content {
+            display: flex;
+            align-items: flex-start;
+            gap: 50px;
+        }
+        
+        .parcours-info {
+            flex: 1;
+        }
+        
+        .parcours-info h2 {
+            font-size: 30px;
+            position: relative;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .parcours-info h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100px;
+            height: 4px;
+            background-color: #59b830;
+        }
+        
+        .parcours-info p {
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .parcours-image {
+            flex: 1;
+        }
+        
+        .parcours-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        /* Étudiants */
+        .students {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+        }
+        
+        .students-content {
+            display: flex;
+            justify-content: center;
+        }
+        
+        .students-image {
+            width: 100%;
+            height: auto;
+        }
+        
+        /* WhatsApp bouton flottant */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #000;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 30px;
+            flex: 1 1 100%;
+            max-width: 220px;
+        }
+        
+        .footer-logo-img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .footer-column {
+            flex: 1;
+            margin: 0 20px;
+            min-width: 200px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #59b830;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            color: #ccc;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: #fff;
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 992px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                margin: 10px 0;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .parcours-tabs {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .parcours-content {
+                flex-direction: column;
+            }
+        }
+        
+        /* Responsive pour le footer */
+        @media screen and (max-width: 768px) {
+            .footer-content {
+                flex-direction: column;
+            }
+            
+            .footer-column {
+                margin: 20px 0;
+            }
+        }
+        .chatbot-float {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 100;
+    animation: float 2s ease-in-out infinite;
+}
+
+.chatbot-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #fff;
+}
+
+.chatbot-icon {
+    background-color: #007bff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.chatbot-icon i {
+    font-size: 28px;
+}
+
+.chatbot-text {
+    background-color: #007bff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 10px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.chatbot-link:hover .chatbot-text {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+    </style>
+</head>
+<body>
+    <!-- Bouton WhatsApp flottant -->
+    <a href="#" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+<div class="chatbot-float">
+    <a href="chat.php" class="chatbot-link">
+        <div class="chatbot-icon">
+            <i class="fas fa-comment-dots"></i>
+        </div>
+        <span class="chatbot-text">Parler à un agent</span>
+    </a>
+</div>  
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <a href="index.html">
+                        <img src="logo (2).png" alt="Groupe IAM Logo" class="logo">
+                    </a>
+                </div>
+                
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <ul class="nav-menu">
+                    <li><a href="#">Le Groupe</a></li>
+                    <li><a href="#">Admission</a></li>
+                    <li><a href="#">International</a></li>
+                    <li><a href="#">Nos Ecoles</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Insertion professionnelle</a></li>
+                    <li><a href="#">Actus</a></li>
+                    <li><a href="#" class="btn-inscription">INSCRIVEZ-VOUS</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Section Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Une institution, 5 parcours</h1>
+            
+            <div class="parcours-tabs">
+                <div class="parcours-tab active">IAM GRANDE ECOLE</div>
+                <div class="parcours-tab">IAM TECH</div>
+                <div class="parcours-tab">IAM Innovation Center</div>
+                <div class="parcours-tab">IAM EXECUTIVE</div>
+                <div class="parcours-tab">IAM E-LEARNING</div>
+            </div>
+            
+            <div class="parcours-content">
+                <div class="parcours-info">
+                    <h2>IAM GRANDE ECOLE</h2>
+                    <p>Le Bachelor en Administration des Affaires de l'IAM : Une formation complète pour des professionnels polyvalents et des entrepreneurs talentueux</p>
+                    <p>Le Groupe IAM propose un Bachelor en Administration des Affaires ambitieux qui vise à doter les diplômés de compétences plurielles leur permettant de piloter efficacement les activités tout au long de la chaîne de valeur de l’entreprise. Cette formation complète prépare également les étudiants à l’entrepreneuriat en leur offrant une large couverture des connaissances fondamentales nécessaires à l’esprit d’initiative et à la conduite opérationnelle d’un projet. Plus qu’un simple diplôme, ce Bachelor est un tremplin vers une carrière réussie et épanouissante dans le monde des affaires.</p>
+                     <p>    
+                        
+                     </p>
+                </div>
+                <div class="parcours-image">
+                    <img src="grandeecole.png" alt="IAM Grande École">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Étudiants -->
+    <section class="students">
+        <div class="container">
+            <div class="students-content">
+                <img src="etudianr.png" alt="Étudiants IAM" class="students-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="logo (2).png" alt="Groupe IAM Logo" class="footer-logo-img">
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Programme</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">IAM GRANDE ECOLE</a></li>
+                        <li><a href="#">IAM TECH</a></li>
+                        <li><a href="#">IAM INNOVATION CENTER</a></li>
+                        <li><a href="#">IAM EXECUTIVE</a></li>
+                        <li><a href="#">IAM E-LEARNING</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>GROUPEIAM</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Présentation de l'école</a></li>
+                        <li><a href="#">Direction de l'école</a></li>
+                        <li><a href="#">Pédagogie</a></li>
+                        <li><a href="#">Alumni</a></li>
+                        <li><a href="#">Insertion professionnelle</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Ressources</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Accéder à KAIROS</a></li>
+                        <li><a href="#">Messagerie GROUPE IAM</a></li>
+                        <li><a href="#">Catalogue Centre de documentation</a></li>
+                        <li><a href="#">ScholarRVox</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="contact-info">
+                    <p><i class="fas fa-phone"></i> (00) 221 33 869 36 36</p>
+                    <p><i class="fas fa-envelope"></i> info@groupeiam.com</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Menu hamburger toggle
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.nav-menu').classList.toggle('active');
+        });
+        
+        // Tabs fonctionnalité
+        const tabs = document.querySelectorAll('.parcours-tab');
+        
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Enlever la classe active de tous les tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                
+                // Ajouter la classe active au tab cliqué
+                tab.classList.add('active');
+                
+                // Ici vous pourriez ajouter du code pour changer le contenu affiché
+                // en fonction du tab sélectionné
+            });
+        });
+    </script>
+</body>
+</html>
